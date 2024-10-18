@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork Form</title>
+    <link rel="stylesheet" href="styles.css">
+<!-- Remove these older versions -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid container">
+            <!-- Sidebar -->
+            <div class="row side-menu">
+                <ul class=" nav-flex column list-unstyled">
+                    <li><a href="#basic-details" class="text-dark">Basic Details</a></li>
+                    <li><a href="#images" class="text-dark">Images</a></li>
+                    <li><a href="#notes" class="text-dark">Notes</a></li>
+                    <li><a href="#" id="showIdLocationForm" class="btn btn-link text-dark">ID & Location</a></li>
+                    <li><a href="#financials" class="text-dark">Financials</a></li>
+                    <li><a href="#sales-statuses" class="text-dark">Sales & Statuses</a></li>
+                    <li><a href="#condition-provenance" class="text-dark">Artwork Condition & Provenance</a></li>
+                    <li><a href="#link-documents" class="text-dark">Link Documents</a></li>
+                </ul>
+            </div>
+            <!-- Main form area -->
+            <div class="main-content">
+                <form id="artworkForm" action="https://example.com/submit" method="post">
+                        <div id="basic-details" class="section">
+                            <h4>Basic Details</h4>
+                            <div class="input-container artist-title">
+                                <div class="input-field">
+                                    <label for="artist" class="form-label">Artist</label>
+                                    <select class="form-control" id="artist" name="artist">
+                                        <option value="">No Artist</option>
+                                        <option value="artist1">Artist 1</option>
+                                        <option value="artist2">Artist 2</option>
+                                    </select>
+                                </div>
+                                <div class="input-field">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" name="title" placeholder="Art Title">
+                                </div>
+                            </div>
+                            <div class="input-container">
+                                <div class="input-field">
+                                    <label for="year-created" class="form-label">Year Created</label>
+                                    <input type="number" class="form-control" id="year-created" name="year_created"
+                                        placeholder="Please enter the year">
+                                </div>
+                                <div class="input-field">
+                                    <div class = "link-container">
+                                        <label for="medium" class="form-label">Select Medium </label>
+                                        <button type="button" class="btn btn-link form-label" id="addMediumBtn">+ Add New</button>
+                                    </div>
+                                    <select class="form-control" id="medium" name="medium">
+                                        <option value="">Please select</option>
+                                        <option value="oil">Oil</option>
+                                        <option value="watercolor">Watercolor</option>
+                                    </select>
+                                </div>
+                            </div>
+                         
+
+                            <!-- Dummy modal -->
+
+                            <div class="modal fade" id="addMediumModal" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add New Medium</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="text" class="form-control" id="newMedium" placeholder="Enter new medium">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" id="saveNewMedium">Save</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            
+                         
+                    
+                            <div class="input-field">
+                                <label for="inscriptions" class="form-label">Inscriptions</label>
+                                <select class="form-control" id="inscriptions" name="inscriptions">
+                                    <option value="">Please select</option>
+                                    <option value="signed">Signed</option>
+                                    <option value="unsigned">Unsigned</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-control" id="category" name="category">
+                                    <option value="">Please select</option>
+                                    <option value="painting">Painting</option>
+                                    <option value="sculpture">Sculpture</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success" id="saveExit">Save & Exit</button>
+                            <button type="button" class="btn btn-secondary" id="saveReturn">Save & Return</button>
+                            <button type="submit" class="btn btn-primary" id="nextStep">Next Step</button>
+                        </div>
+
+                    </div>
+                
+                </form>
+                
+                <!-- Second Tab: ID & Location -->
+            <div class="col-md-9 second-tab mt-5" id="idLocationSection" style="display: none;">
+                <h4>ID & Location</h4>
+                <form id="idLocationForm">
+                    <div class="input-container">
+                        <div class="input-field">
+                            <div class="label-container">
+                                <label for="location" class="form-label">Select Location:</label>
+                                <button type="button" class="btn btn-link" id="addLocationBtn">+ Add New</button>
+                            </div>
+                            <select class="form-control" id="location" name="location">
+                                <option value="" disabled selected>Please select</option>
+                                <option value="Gallery">Gallery</option>
+                                <option value="Museum">Museum</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="input-field">
+                            <label for="inventoryId" class="form-label">Inventory ID:</label>
+                            <input type="text" class="form-control" id="inventoryId" name="inventoryId">
+                        </div>
+                    </div>  
+                    <div class="input-container">
+                        <div class="input-field">
+                            <label for="accessionId" class="form-label">Accession ID:</label>
+                            <input type="text" class="form-control" id="accessionId" name="accessionId">
+                        </div>
+                        <div class="input-field">
+                            <label for="partnerId" class="form-label">Partner ID</label>
+                            <input type="text" class="form-control" id="partnerId" name="partnerId">
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="input-field">
+                            <label for="tagNumber" class="form-label">Active RFID Tag Number</label>
+                            <input type="text" class="form-control" id="tagNumber" name="tagNumber">
+                        </div>
+                        <div class="input-field">
+                            <label for="barcodeNumber" class="form-label">Barcode Number</label>
+                            <input type="text" class="form-control" id="barcodeNumber" name="barcodeNumber">
+                        </div>
+                    </div>  
+                </form>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Save Location</button>
+                    <!-- Back to Main View Link -->
+                    <a href="#" id="backToMainView" class="btn btn-secondary mt-3">Back to Main View</a>
+                </div>
+            </div>
+    </div>
+    <script src ="script.js"></script>
+</body>
+</html>
